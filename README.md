@@ -38,3 +38,13 @@ I.项目中安装json-server `npm i -D json-server`
 II.准备一个json文件  server\data.json
 III.添加启动命令
 
+# 快照1 项目框架设定
+1. 路由设定
+一级路由：Layout、New
+二级路由：Layout/month、Layout/year
+
+2. 组件库设定
+src\theme.css设置主题色
+
+3. Redux设定
+src\store\modules\billStore.js与src\store\index.js

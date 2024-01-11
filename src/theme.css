@@ -1,0 +1,9 @@
+/* 全局生效样式 */
+:root:root {
+    --adm-color-primary: #A062D4;
+}
+
+/* 局部生效样式 */
+.homo {
+    --adm-color-primary: #114514;
+}
