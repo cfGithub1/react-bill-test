@@ -1,10 +1,12 @@
-import { useMemo, useState,useEffect } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import dayjs from 'dayjs';
 
 import { NavBar, DatePicker } from 'antd-mobile'
 import './index.scss'
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
+
+import DailyBill from './components/DailyBill';
 
 const Month = () => {
     // 弹窗是否开启
@@ -25,20 +27,35 @@ const Month = () => {
         });
         return result;
     }, [billList])
-    
+
     //展示的数据 
-    const [showData,setShowData] = useState([])
-    const showResult = useMemo(()=>{
-        if(showData == undefined) return {pay:0,income:0,total:0}
-         const pay = showData.filter(item=>item.type==='pay').reduce((pre,cur)=>pre+cur.money,0)
-         const income = showData.filter(item=>item.type==='income').reduce((pre,cur)=>pre+cur.money,0)
-    return {pay:pay*-1,income,total:pay+income}
-    },[showData])
+    const [showData, setShowData] = useState([])
+    const showResult = useMemo(() => {
+        if (!showData) return { pay: 0, income: 0, total: 0 }
+        const pay = showData.filter(item => item.type === 'pay').reduce((pre, cur) => pre + cur.money, 0)
+        const income = showData.filter(item => item.type === 'income').reduce((pre, cur) => pre + cur.money, 0)
+        return { pay: pay * -1, income, total: pay + income }
+    }, [showData])
 
     // 初始化展示当月数据
-    useEffect(()=>{
+    useEffect(() => {
         setShowData(monthBillList[dayjs(new Date()).format('YYYY-M')])
-    },[monthBillList])
+    }, [monthBillList])
+
+    // 按日分组
+    const dayBillList = useMemo(() => {
+        if (!showData) return []
+        const result = {};
+        showData.forEach(item => {
+            const date = new Date(item.date);
+            const key = `${date.getMonth() + 1}-${date.getDate()}`
+            if (!result[key]) result[key] = [];
+            result[key].push(item);
+        })
+        console.log(result);
+        return result;
+    }, [showData])
+    console.log(Object.keys(dayBillList));
 
     return (
         <div className="monthlyBill">
@@ -77,9 +94,14 @@ const Month = () => {
                         visible={dateVisable}
                         max={new Date()}
                         onClose={() => setDateVisable(false)}
-                        onConfirm={(date) => { setDate(date);setShowData(monthBillList[dayjs(date).format('YYYY-M')])}}
+                        onConfirm={(date) => { setDate(date); setShowData(monthBillList[dayjs(date).format('YYYY-M')]);}}
                     />
                 </div>
+                {/* 单日列表统计 */}
+                {
+                    Object.keys(dayBillList).map(item => <DailyBill key={item} dayBillList={dayBillList[item]} date={item}/>)
+                }
+
             </div>
         </div >
     )
