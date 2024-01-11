@@ -76,3 +76,8 @@ https://mobile.ant.design/zh/components/tab-bar
 1. 把当前月的账单数据以单日为单位进行统计显示
 2. 把单日的账单列表渲染到视图中
 3. 箭头控制账单列表的展开与折叠
+
+# 快照4 新增账单
+# 快照4.1 新增账单静态结构
+1. 新增账单静态结构
+2. 利用src\contants\index.js进行中文转换
