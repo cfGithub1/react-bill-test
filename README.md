@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# 项目介绍
+这是一个简单的记账本项目，使用React和Redux构建，并集成了react-router-dom、dayjs、classnames、antd-mobile和axios等库。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 项目配置
+1. 项目初始化 `npx create-react-app react-bill-test`
+2. 安装Redux `npm i @reduxjs/toolit react-redux`
+https://cn.redux.js.org/tutorials/quick-start
+3. 安装路由 `npm i react-router-dom`
+4. 安装时间处理 `npm i dayjs`
+https://dayjs.fenxianglu.cn/category/parse.html
+5. 安装class类名处理 `npm i classnames`
+6. 安装移动端组件库 `npm i antd-mobile`
+https://mobile.ant.design/zh/components/button
+7. 安装axios `npm i axios`
+https://www.axios-http.cn/docs/example
 
-## Available Scripts
+# 快照0 项目初始化
+1. src目录下只保留APP.js、index.js并修改其中的内容
+2. 别名路径配置
+- 路径解析配置(webpack),把@/解析为src/
+CRA本身把webpack配置包装到了黑盒里无法直接修改，需要借助一个插件-craco
+https://craco.js.org/docs/getting-started/
+配置步骤:
+I. 安装craco `npm i -D @craco/craco`
+II. 项目根目录下创建配置文件craco.config.js
+III. 配置文件中添加路径解析配置
+IV. 包文件中配置启动和打包命令
+- 路径联想配置(VsCode),VsCode在输入@/时，自动联想出来对应的src/下的子级目录。
+配置步骤:
+I.根目录下新增配置文件- jsconfig.json
+II.添加路径提示配置
+3. json-server实现数据Mock
+- 什么是数据Mock:
+在前后端分类的开发模式下，前端可以在没有实际后端接口的支持下先进行接口数据的模拟，进行正常的业务功能开发
+- json-server是一个node包，可以获得零编码的完整的Mock服务
+实现步骤:
+I.项目中安装json-server `npm i -D json-server`
+II.准备一个json文件  server\data.json
+III.添加启动命令
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
