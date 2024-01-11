@@ -48,3 +48,9 @@ src\theme.css设置主题色
 
 3. Redux设定
 src\store\modules\billStore.js与src\store\index.js
+
+# 快照2 Tab标签实现
+1. 安装sass依赖：`npm i -D sass`
+2. 完成静态tab样式：
+https://mobile.ant.design/zh/components/tab-bar
+3. 结合路由展示对应组件
