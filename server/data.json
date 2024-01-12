@@ -90,6 +90,27 @@
       "date": "2024-01-10 13:14:56",
       "useFor": "food",
       "id": 20
+    },
+    {
+      "id": "95e8",
+      "type": "pay",
+      "money": -4000,
+      "date": "2024-01-12 23:45:04",
+      "useFor": "promote"
+    },
+    {
+      "id": "c48b",
+      "type": "income",
+      "money": 3300,
+      "date": "2024-01-12 23:45:45",
+      "useFor": "salary"
+    },
+    {
+      "id": "16fe",
+      "type": "pay",
+      "money": -15,
+      "date": "2023-01-10 00:00:00",
+      "useFor": "audio"
     }
   ]
 }
